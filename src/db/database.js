@@ -25,7 +25,8 @@ const sequelize = new Sequelize(
 )
 // Configuración de la conexión a la base de datos mongoDB y prueba de conexión
 const {MONGO_DB_HOST,MONGO_DB} = process.env;
-const MONGO_DB_URI = `mongodb://${MONGO_DB_HOST}/${MONGO_DB}`;
+const MONGO_DB_URI = `mongodb+srv://${encodeURIComponent(process.env.MONGO_DB_USERNAME)}:${encodeURIComponent(process.env.MONGO_DB_PASSWORD)}@${MONGO_DB_HOST}/${MONGO_DB}`;
+// const MONGO_DB_URI = `mongodb://${MONGO_DB_HOST}/${MONGO_DB}`;
 
 const mongoDB = async () => mongoose.connect(MONGO_DB_URI);
 mongoDB()
